@@ -1,2 +1,9 @@
 # tgBot-EventReminder
-Telegram bot: event reminder - personal secretary assistant
+Telegram bot: персональный помщщник для заблаговременного напоминания о Ваших предстоящих событиях
+https://github.com/gbGroupProjects/tgBot-EventReminder
+
+Telegram
+https://t.me/ProgjectGBbot
+
+BirthdayBot
+@ProgjectGBbot
