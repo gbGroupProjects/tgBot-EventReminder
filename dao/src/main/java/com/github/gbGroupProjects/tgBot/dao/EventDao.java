@@ -14,5 +14,4 @@ public interface EventDao {
      * @return - count of all events by Owner id
      */
     Integer countOfEvents(int id);
-
 }

@@ -41,5 +41,4 @@ public class CategoryNumDtoDaoJdbc implements CategoryNumDtoDao {
                 paramsOfSQL,
                 BeanPropertyRowMapper.newInstance(CategoryGroupDto.class));
     }
-
 }
