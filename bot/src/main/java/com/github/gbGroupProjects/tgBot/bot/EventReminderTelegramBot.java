@@ -16,8 +16,8 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
 
     public void onUpdateReceivedText(Update update) {
         String message = update.getMessage().getText().trim();
-        String commandIdentifier = message.split(" ")[0].toLowerCase();
-        String responseMessage = "autoreply " + message;
+       // String commandIdentifier = message.split(" ")[0].toLowerCase();
+        String responseMessage = "auto-reply (1.01): " + message;
         sendMessage(update, responseMessage);
     }
 

@@ -4,15 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
 
     <parent>
-        <artifactId>er</artifactId>
-        <groupId>com.github.gbGroupProjects.tgBot</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>tgBot</artifactId>
+	    <groupId>com.github.gbGroupProjects.tgBot</groupId>
+        <version>1.0-SNAPSHOT</version>  <!-- <version>1.0-SNAPSHOT</version>  -->
     </parent>
 
     <artifactId>bot</artifactId>
-    <description>TelegramBot Application</description>
+    <description>Telegram Bot Application</description>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -31,11 +35,11 @@
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots-spring-boot-starter</artifactId>
         </dependency>
-        <dependency>
+ <!--       <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
         </dependency>
-
+-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -50,6 +54,34 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.gbGroupProjects.tgBot</groupId>
+            <artifactId>service-command</artifactId>
+        </dependency>
+<!--        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.2.12.RELEASE</version>
+        </dependency>  -->
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots-meta</artifactId>
+            <version>5.6.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
         </dependency>
     </dependencies>
 
