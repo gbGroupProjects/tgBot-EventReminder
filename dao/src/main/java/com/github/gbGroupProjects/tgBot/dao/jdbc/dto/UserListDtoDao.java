@@ -9,5 +9,5 @@ import java.util.List;
  * User DAO Interface.
  */
 public interface UserListDtoDao {
-    List<UserDto> findCategoriesWithSumOfExpenses(LocalDate dateFrom, LocalDate dateTo);
+    List<UserDto> findAllUsersWithEvents(LocalDate dateFrom, LocalDate dateTo);
 }
