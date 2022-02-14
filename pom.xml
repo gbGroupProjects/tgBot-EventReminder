@@ -83,6 +83,7 @@
 			<scope>test</scope>
 		</dependency>
 
+
 		<!--  иерархия модулей -->
 		<dependency>
 			<groupId>com.github.gbGroupProjects.tgBot</groupId>
