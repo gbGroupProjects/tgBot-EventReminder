@@ -7,9 +7,11 @@ public enum CommandName {
     STOP("/stop"),
     HELP("/help"),
 
-    ADD("/add"),
     GET("/get"),
-    ADDEVENT("/addevent");
+
+    ADDUSER("/add"),
+    ADDEVENT("/addevent"),
+    ADDEVENTCATEGORY("/addcategory");
 
     private final String commandName;
 

@@ -1,5 +1,7 @@
 package com.github.gbGroupProjects.tgBot.bot;
 
+import com.github.gbGroupProjects.tgBot.command.Command;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -14,10 +16,24 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
     @Value("${bot.token}")
     private String token;
 
+    private CommandContainer  commandContainer;
+
+    @Autowired
+    EventReminderTelegramBot(CommandContainer  commandContainer) {
+        this.commandContainer = commandContainer;
+    }
+
     public void onUpdateReceivedText(Update update) {
         String message = update.getMessage().getText().trim();
-       // String commandIdentifier = message.split(" ")[0].toLowerCase();
-        String responseMessage = "auto-reply (1.01): " + message;
+        String commandIdentifier = message.split(" ")[0].toLowerCase();
+        //String responseMessage = "auto-reply (1.02): " + message;
+        //if (!update.getMessage().getText().equals("/menu")) {
+            Command command = commandContainer.defineCommand(commandIdentifier);
+            String responseMessage = command.execute(update);
+            sendMessage(update, responseMessage);
+        //} else {
+        //    sendMessageKbd(update, message);
+        //}
         sendMessage(update, responseMessage);
     }
 

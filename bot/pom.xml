@@ -57,14 +57,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.gbGroupProjects.tgBot</groupId>
-            <artifactId>service-command</artifactId>
-        </dependency>
-<!--        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>5.2.12.RELEASE</version>
-        </dependency>  -->
+        </dependency>
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
@@ -75,14 +71,16 @@
             <version>5.6.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.gbGroupProjects.tgBot</groupId>
+            <artifactId>service-command</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
