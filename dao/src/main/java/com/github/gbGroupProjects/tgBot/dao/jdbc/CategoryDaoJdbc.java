@@ -2,17 +2,20 @@ package com.github.gbGroupProjects.tgBot.dao.jdbc;
 
 import com.github.gbGroupProjects.tgBot.dao.CategoryDao;
 import com.github.gbGroupProjects.tgBot.model.EventCategory;
+
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,9 +24,9 @@ import java.util.Map;
 public class CategoryDaoJdbc implements CategoryDao {
 
     private String sqlAllCategories = "SELECT c.category_id, c.category_name " +
-                    "FROM category c ORDER BY c.category_id";
+            "FROM category c ORDER BY c.category_id";
     private String sqlCreateNewCategory = "INSERT INTO category(category_id, category_name) " +
-                        "     VALUES (:categoryId, :categoryName)";
+            "     VALUES (:categoryId, :categoryName)";
     private String sqlCheckUniqueCategoryName = "SELECT count(c.category_name) " +
             "       FROM category c WHERE lower(c.category_name) = lower(:categoryName)";
     private String sqlCountOfCategories = "SELECT count(*) FROM category";
@@ -71,9 +74,9 @@ public class CategoryDaoJdbc implements CategoryDao {
         @Override
         public EventCategory mapRow(ResultSet resultSet, int i) throws SQLException {
             EventCategory category = new EventCategory();
-                category.setCategoryId(resultSet.getInt("category_id"));
-                category.setCategoryName(resultSet.getString("category_name"));
-                return category;
+            category.setCategoryId(resultSet.getInt("category_id"));
+            category.setCategoryName(resultSet.getString("category_name"));
+            return category;
         }
     }
 }
