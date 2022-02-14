@@ -29,9 +29,12 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-test</artifactId>
     </dependency>
+<<<<<<< HEAD
     <dependency>
         <groupId>com.github.gbGroupProjects.tgBot</groupId>
         <artifactId>dao</artifactId>
     </dependency>
+=======
+>>>>>>> main
 </dependencies>
 </project>
