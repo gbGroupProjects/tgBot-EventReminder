@@ -41,36 +41,4 @@ public interface CategoryDao {
      * @return - count of all categories
      */
     Integer countOfCategories();
-
-    @Component
-    class CategoryNumDtoDaoJdbc implements CategoryNumDtoDao {
-
-        private String sqlFindCategoriesWithSumOfExpenses = "" +
-                "  SELECT   c.category_name AS categoryName, " +
-                "           count(e.price) AS numOfEvents " +
-                "  FROM event e " +
-                "  INNER JOIN category c " +
-                "  ON e.category_id = c.category_id " +
-                "       WHERE date BETWEEN :dateFrom AND :dateTo " +
-                "       GROUP BY e.category_id " +
-                "       ORDER BY numOfEvents " +
-                "       DESC";
-
-        private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
-        public CategoryNumDtoDaoJdbc(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-            this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        }
-
-        @Override
-        public List<CategoryGroupDto> findCategoriesWithSumOfExpenses(LocalDate dateFrom, LocalDate dateTo) {
-
-            Map<String, LocalDate> paramsOfSQL = new HashMap<>();
-            paramsOfSQL.put("dateFrom", dateFrom);
-            paramsOfSQL.put("dateTo",  dateTo);
-            return namedParameterJdbcTemplate.query(sqlFindCategoriesWithSumOfExpenses,
-                    paramsOfSQL,
-                    BeanPropertyRowMapper.newInstance(CategoryGroupDto.class));
-        }
-    }
 }
