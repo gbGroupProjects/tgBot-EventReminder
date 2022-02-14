@@ -39,7 +39,6 @@
             <artifactId>model</artifactId>
         </dependency>   
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
