@@ -11,21 +11,21 @@ public interface UserDao {
      * Get all categories
      * @return Category list
      */
-    List<User> findAllUsers();
+    //List<User> findAllUsers();
 
     /**
      * Create new Category
      * @param user - category to create
      * @return - id of the created user
      */
-    Integer addNewUser(User user);
+    Integer addUser(User user);
 
     /**
      * Check unique category name
      * @param  TelegramId - Telegram ID of a user
      * @return - true if the Telegram exist
      */
-    boolean isUserTelegramIdUnique(int TelegramId);
+    //boolean isUserTelegramIdUnique(int TelegramId);
 
     /**
      * Get count of all users

@@ -17,8 +17,8 @@ public class CommandContainer {
     private StopCommand stopCommand;
 
     private AddUserCommand addUserCommand;
-    private AddCategoryCommand addCategoryCommand;
-    private AddEventCommand addEventCommand;
+//    private AddCategoryCommand addCategoryCommand;
+//  private AddEventCommand addEventCommand;
 
     private UnknownCommand unknownCommand;
 
@@ -45,21 +45,24 @@ public class CommandContainer {
         this.stopCommand = stopCommand;
         commandMap.put(STOP.getCommandName(), stopCommand);
     }
+
     @Autowired
     public void setAddUserCommand(AddUserCommand com) {
         this.addUserCommand = com;
         commandMap.put(ADDUSER.getCommandName(), com);
     }
-    @Autowired
-    public void setAddCategoryCommand(AddCategoryCommand com) {
-        this.addCategoryCommand = com;
-        commandMap.put(ADDEVENTCATEGORY.getCommandName(), com);
-    }
+/*    @Autowired
+//    public void setAddCategoryCommand(AddCategoryCommand com) {
+//        this.addCategoryCommand = com;
+//        commandMap.put(ADDEVENTCATEGORY.getCommandName(), com);
+//    }
     @Autowired
     public void setAddEventCommand(AddEventCommand com) {
         this.addEventCommand = com;
         commandMap.put(ADDEVENT.getCommandName(), com);
     }
+
+ */
     @Autowired
     public void setUnknownCommand(UnknownCommand unknownCommand) {
         this.unknownCommand = unknownCommand;
@@ -75,5 +78,4 @@ public class CommandContainer {
 //        this.getCommand = getCommand;
 //        commandMap.put(GET.getCommandName(), getCommand);
 //    }
-
 }
