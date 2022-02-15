@@ -7,6 +7,7 @@ Telegram bot: персональный помощник для заблагов�
     2.  Охотников Павел
     3.  Рунов Владимир           https://github.com/Vladimir-Runov
 
+# Отчет, история изменений https://docs.google.com/document/d/1nUsrYS3_ERqmgOPftKHMEqoM5p1DVn1pxfkZxurkRY0/edit?usp=sharing
 # Trello:
 https://trello.com/b/K0Bfx4KY/бот
 
