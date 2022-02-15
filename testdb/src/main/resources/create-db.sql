@@ -1,6 +1,5 @@
-DROP TABLE IF EXISTS expense;
-DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS event;
+DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS user;
 
 CREATE TABLE category
@@ -18,21 +17,16 @@ CREATE TABLE user
   CONSTRAINT user_pk PRIMARY KEY (user_id)
 );
 
-CREATE TABLE expense
-(
-  expense_id INT NOT NULL AUTO_INCREMENT,
-  date DATE NOT NULL,
-  category_id INT NOT NULL,
-  price DECIMAL NOT NULL,
-    CONSTRAINT expense_pk PRIMARY KEY (expense_id),
-    CONSTRAINT expense_category_fk FOREIGN KEY (category_id) REFERENCES category (category_id)
-);
-
 CREATE TABLE event
 (
   event_id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
   category_id INT NOT NULL,
   date DATE NOT NULL,
+  active INT NOT NULL DEFAULT 0,
+  regular INT NOT NULL DEFAULT 0,
+  daysIn INT NOT NULL DEFAULT 0,
+
   comment VARCHAR(20) NOT NULL,
 
     CONSTRAINT event_pk PRIMARY KEY (event_id),

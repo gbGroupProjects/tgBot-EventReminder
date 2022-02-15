@@ -17,7 +17,7 @@ import java.util.Map;
 
 public interface EventDao {
     /**
-     * Create new Expense
+     * Create new Event
      * @param event - event to create
      * @return - id of the created event
      */

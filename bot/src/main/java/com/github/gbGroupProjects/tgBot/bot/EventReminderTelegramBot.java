@@ -29,7 +29,8 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
         //String responseMessage = "auto-reply (1.02): " + message;
         //if (!update.getMessage().getText().equals("/menu")) {
             Command command = commandContainer.defineCommand(commandIdentifier);
-            String responseMessage = command.execute(update);
+            String responseMessage = update.getMessage().getFrom().getId().toString() + ":" + command.execute(update);
+
             sendMessage(update, responseMessage);
         //} else {
         //    sendMessageKbd(update, message);
@@ -39,6 +40,7 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+        long userTelegramId = update.getMessage().getFrom().getId();
         if (update.hasMessage()) {
             if (update.getMessage().hasText()) {
                 onUpdateReceivedText(update);

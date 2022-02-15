@@ -39,7 +39,7 @@ public class UserDaoJdbcTestIT {
 
         User user = new User();
         user.setName("tester_aw_0001");
-        user.setTelegramId(1000001);
+        user.setTelegramId(10000000L);
 
         Integer userId = userDaoJdbc.addUser(user);
         assertNotNull(userId);
@@ -56,7 +56,7 @@ public class UserDaoJdbcTestIT {
 
         User user = new User();
         user.setName("user_test_0002");
-        user.setTelegramId(20000001);
+        user.setTelegramId(20000001L);
 
         userDaoJdbc.addUser(user);
         Integer countUserAfterAdd = userDaoJdbc.countOfUsers();

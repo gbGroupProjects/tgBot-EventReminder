@@ -5,13 +5,13 @@ package com.github.gbGroupProjects.tgBot.model;
  */
 public class User {
     private Integer Id;
-    private Integer telegramId;
+    private Long telegramId;
     private String Name;
 
     public Integer getUserId() {
         return Id;
     }
-    public Integer getTelegramId() {
+    public Long getTelegramId() {
         return telegramId;
     }
     public Object getName() { return Name;  }
@@ -19,7 +19,7 @@ public class User {
     public void setId(Integer id) {
         this.Id = id;
     }
-    public void setTelegramId(Integer id) {
+    public void setTelegramId(Long id) {
         this.telegramId = id;
     }
     public void setName(String name) {
