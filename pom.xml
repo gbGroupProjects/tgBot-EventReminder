@@ -13,7 +13,10 @@
 	<modules>
 		<module>bot</module>
 		<module>service-command</module>
-	</modules>
+		<module>model</module>
+		<module>dao</module>
+  	        <module>testdb</module>
+    </modules>
 
 	<properties>
 		<java.version>11</java.version>
@@ -81,6 +84,8 @@
 			<scope>test</scope>
 		</dependency>
 
+
+		<!--  иерархия модулей -->
 		<dependency>
 			<groupId>com.github.gbGroupProjects.tgBot</groupId>
 			<artifactId>bot</artifactId>
@@ -89,6 +94,16 @@
 		<dependency>
 			<groupId>com.github.gbGroupProjects.tgBot</groupId>
 			<artifactId>service-command</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.gbGroupProjects.tgBot</groupId>
+			<artifactId>model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.gbGroupProjects.tgBot</groupId>
+			<artifactId>dao</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
