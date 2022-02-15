@@ -6,5 +6,7 @@ EventReminder
 Telegram
 https://t.me/ProgjectGBbot
 
-BirthdayBot
-@ProgjectGBbot
+BirthdayBot @ProgjectGBbot
+
+участники проекта:
+  https://github.com/Vladimir-Runov
