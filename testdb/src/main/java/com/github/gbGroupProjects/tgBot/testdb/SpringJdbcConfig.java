@@ -31,5 +31,4 @@ public class SpringJdbcConfig {
     public DataSourceTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
     }
-
 }

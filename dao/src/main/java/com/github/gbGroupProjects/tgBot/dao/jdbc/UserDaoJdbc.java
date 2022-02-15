@@ -2,6 +2,9 @@ package com.github.gbGroupProjects.tgBot.dao.jdbc;
 
 import com.github.gbGroupProjects.tgBot.dao.UserDao;
 import com.github.gbGroupProjects.tgBot.model.User;
+import com.github.gbGroupProjects.tgBot.testdb.SpringJdbcConfig;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 @Component
 public class UserDaoJdbc implements UserDao {
