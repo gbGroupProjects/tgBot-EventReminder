@@ -43,6 +43,7 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+        if (commandContainer.getUserCommand().isUserTelegramIdUnique(userTelegramId)) {  // 1915453131
         long userTelegramId = update.getMessage().getFrom().getId();
         if (commandContainer.getUserCommand().isUserTelegramIdUnique(userTelegramId)) {  // 1915453131
             String sResult = commandContainer.getUserCommand().execute(update);

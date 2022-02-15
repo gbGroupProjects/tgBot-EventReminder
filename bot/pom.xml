@@ -59,8 +59,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>5.2.12.RELEASE</version>
-        </dependency>
+            <version>5.2.13.RELEASE</version>
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
