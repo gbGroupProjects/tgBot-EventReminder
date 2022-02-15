@@ -4,7 +4,6 @@ https://github.com/gbGroupProjects/tgBot
 EventReminder
 
 Telegram
-https://t.me/ProgjectGBbot
+https://t.me/ProgjectGBbot        BirthdayBot       @ProgjectGBbot
 
-BirthdayBot
-@ProgjectGBbot
+Участники проекта:
