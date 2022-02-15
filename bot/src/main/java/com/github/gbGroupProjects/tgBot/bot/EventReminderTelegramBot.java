@@ -4,6 +4,7 @@ import com.github.gbGroupProjects.tgBot.command.Command;
 import com.github.gbGroupProjects.tgBot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -48,19 +49,20 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
             String sResult = commandContainer.getUserCommand().execute(update);
             sendMessage(update, "+" + sResult + ">" );
 
-            User u = commandContainer.getUserCommand().getUserByTelegramId(userTelegramId);
-            List<User> ls = commandContainer.getUserCommand().getAllUsers();
-            sResult = "";
-            for (User uu:ls ) {
-                sResult = sResult + "[" + uu.getUserId() + "],{" + uu.getTelegramId() + "}," + uu.getName() + "\n";
-            }
-            sendMessage(update, "all:" + sResult + ">" );
+     //       User u = commandContainer.getUserCommand().getUserByTelegramId(userTelegramId);
         } else {
-            User u = commandContainer.getUserCommand().getUserByTelegramId(userTelegramId);
-            sendMessage(update, "" + u.getName() + ">" );
+       //     User u = commandContainer.getUserCommand().getUserByTelegramId(userTelegramId);
+       //     sendMessage(update, "" + u.getName() + ">" );
         }
 
         //User user = commandContainer.getUserByTelegramId(userTelegramId);
+        List<User> ls = commandContainer.getUserCommand().getAllUsers();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("--users---\n");
+        for (User uu:ls ) {
+            stringBuilder.append("[" + uu.getUserId() + "],{" + uu.getTelegramId() + "}," + uu.getName() + "\n");
+        }
+        sendMessage(update, "" + stringBuilder.toString() + "" );
 
         if (update.hasMessage()) {
             if (update.getMessage().hasText()) {
