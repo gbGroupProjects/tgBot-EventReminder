@@ -43,22 +43,22 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        if (commandContainer.getUserCommand().isUserTelegramIdUnique(userTelegramId)) {  // 1915453131
         long userTelegramId = update.getMessage().getFrom().getId();
         if (commandContainer.getUserCommand().isUserTelegramIdUnique(userTelegramId)) {  // 1915453131
             String sResult = commandContainer.getUserCommand().execute(update);
             sendMessage(update, "+" + sResult + ">" );
-        } else {
-        }
-        List<User> ls = commandContainer.getUserCommand().getAllUsers();
-        String sResult = "";
-        for (User uu:ls ) {
-            sResult = sResult.concat("[" + uu.getUserId() + "],{" + uu.getTelegramId() + "}," + uu.getName() + "\n");
-        }
-        sendMessage(update, "all:" + sResult + ">" );
 
-        User u = commandContainer.getUserCommand().getUserByTelegramId(userTelegramId);
-        sendMessage(update, "[" + u.getName() + "]>" );
+            User u = commandContainer.getUserCommand().getUserByTelegramId(userTelegramId);
+            List<User> ls = commandContainer.getUserCommand().getAllUsers();
+            sResult = "";
+            for (User uu:ls ) {
+                sResult = sResult + "[" + uu.getUserId() + "],{" + uu.getTelegramId() + "}," + uu.getName() + "\n";
+            }
+            sendMessage(update, "all:" + sResult + ">" );
+        } else {
+            User u = commandContainer.getUserCommand().getUserByTelegramId(userTelegramId);
+            sendMessage(update, "" + u.getName() + ">" );
+        }
 
         //User user = commandContainer.getUserByTelegramId(userTelegramId);
 
