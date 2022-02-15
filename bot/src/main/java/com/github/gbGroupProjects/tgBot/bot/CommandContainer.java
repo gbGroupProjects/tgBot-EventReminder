@@ -2,6 +2,7 @@ package com.github.gbGroupProjects.tgBot.bot;
 
 import com.github.gbGroupProjects.tgBot.command.*;
 
+import com.github.gbGroupProjects.tgBot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +25,14 @@ public class CommandContainer {
 
     // todo:  реализовать управление командами
     private Map<String, Command> commandMap = new HashMap<>();
+
+    public AddUserCommand getUserCommand() {
+        return addUserCommand;
+    }
+
+    public boolean isUserTelegramIdUnique(long TelegramId) {
+        return addUserCommand.isUserTelegramIdUnique(TelegramId);
+}
 
 
     public Command defineCommand(String commandIdentifier) {

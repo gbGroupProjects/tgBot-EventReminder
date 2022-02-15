@@ -11,7 +11,7 @@ public interface UserDao {
      * Get all categories
      * @return Category list
      */
-    //List<User> findAllUsers();
+    List<User> findAllUsers();
 
     /**
      * Create new Category
@@ -25,11 +25,20 @@ public interface UserDao {
      * @param  TelegramId - Telegram ID of a user
      * @return - true if the Telegram exist
      */
-    //boolean isUserTelegramIdUnique(int TelegramId);
+    boolean isUserTelegramIdUnique(long TelegramId);
+
+    /**
+     * Retrieve User info by Telergam ID
+     * @param  TelegramId - Telegram ID of a user
+     * @return - User by Telegram Id
+     */
+    User getUserByTelegramId(long TelegramId);
 
     /**
      * Get count of all users
      * @return - count of all users
      */
     Integer countOfUsers();
+
+
 }

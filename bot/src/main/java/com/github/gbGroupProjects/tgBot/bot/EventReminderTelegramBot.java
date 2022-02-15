@@ -1,6 +1,7 @@
 package com.github.gbGroupProjects.tgBot.bot;
 
 import com.github.gbGroupProjects.tgBot.command.Command;
+import com.github.gbGroupProjects.tgBot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -8,6 +9,8 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import java.util.List;
 
 @Component
 public class EventReminderTelegramBot extends TelegramLongPollingBot {
@@ -29,7 +32,8 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
         //String responseMessage = "auto-reply (1.02): " + message;
         //if (!update.getMessage().getText().equals("/menu")) {
             Command command = commandContainer.defineCommand(commandIdentifier);
-            String responseMessage = command.execute(update);
+            String responseMessage = update.getMessage().getFrom().getId() + ":" + command.execute(update);
+
             sendMessage(update, responseMessage);
         //} else {
         //    sendMessageKbd(update, message);
@@ -39,6 +43,24 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+        long userTelegramId = update.getMessage().getFrom().getId();
+        if (commandContainer.getUserCommand().isUserTelegramIdUnique(userTelegramId)) {  // 1915453131
+            String sResult = commandContainer.getUserCommand().execute(update);
+            sendMessage(update, "+" + sResult + ">" );
+        } else {
+        }
+        List<User> ls = commandContainer.getUserCommand().getAllUsers();
+        String sResult = "";
+        for (User uu:ls ) {
+            sResult = sResult.concat("[" + uu.getUserId() + "],{" + uu.getTelegramId() + "}," + uu.getName() + "\n");
+        }
+        sendMessage(update, "all:" + sResult + ">" );
+
+        User u = commandContainer.getUserCommand().getUserByTelegramId(userTelegramId);
+        sendMessage(update, "[" + u.getName() + "]>" );
+
+        //User user = commandContainer.getUserByTelegramId(userTelegramId);
+
         if (update.hasMessage()) {
             if (update.getMessage().hasText()) {
                 onUpdateReceivedText(update);
