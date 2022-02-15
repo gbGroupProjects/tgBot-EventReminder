@@ -4,6 +4,7 @@ import com.github.gbGroupProjects.tgBot.dao.UserDao;
 import com.github.gbGroupProjects.tgBot.model.User;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 @Service
 public class AddUserCommand implements Command {
@@ -15,6 +16,20 @@ public class AddUserCommand implements Command {
     public AddUserCommand(UserDao u) {
         this.userDao = u;
     }
+
+    public boolean isUserTelegramIdUnique(long TelegramId) {
+        try {
+            return userDao.isUserTelegramIdUnique(TelegramId);
+        }  catch (Exception var6) {
+           String mes = var6.getLocalizedMessage();
+        }
+        return false;
+    }
+
+    public User getUserByTelegramId(long TelegramId) {
+        return userDao.getUserByTelegramId(TelegramId);
+    }
+
 
     @Override
     public String execute(Update update) {

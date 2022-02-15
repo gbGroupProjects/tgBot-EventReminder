@@ -23,12 +23,12 @@ import java.util.Map;
 @Component
 public class UserDaoJdbc implements UserDao {
 
-    private String sqlAllUsers = "SELECT u.user_id, u.user_name, u.telegram_Id FROM user u ORDER BY u.user_id";
-    private String sqlSelectUserBuTelegramId = "SELECT u.user_id, u.user_name FROM user u WHERE u.felegram_Id = :telegram_Id";
+    private String sqlAllUsers = "SELECT u.user_id, u.user_name, u.telegram_id FROM user u ORDER BY u.user_id";
+    private String sqlSelectUserBuTelegramId = "SELECT u.user_id, u.user_name FROM user u WHERE u.telegram_Id = :telegram_id";
     private String sqlAddNewUser = "INSERT INTO user(user_id, telegram_id, name) VALUES (:user_id, :telegram_id, :name)";
     private String sqlCountOfUsers = "SELECT count(*) FROM user";
-    private String sqlCheckUniqueUserTelegramId ="SELECT count(*) FROM user WHERE telegram_Id = :telegram_id";
-    private String sqlGetUserByTelegramId ="SELECT * FROM user WHERE telegram_Id = :telegram_id";
+    private String sqlCheckUniqueUserTelegramId ="SELECT count(*) FROM user WHERE u.telegram_id = :telegram_id";
+    private String sqlGetUserByTelegramId ="SELECT u.user_id, u.user_name, u.telegram_id FROM user WHERE u.telegram_id = :telegram_id";
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -56,7 +56,7 @@ public class UserDaoJdbc implements UserDao {
     @Override
     public boolean isUserTelegramIdUnique(long TelegramId)
     {
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource("telegtamId", TelegramId);
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource("telegtam_id", TelegramId);
         return namedParameterJdbcTemplate.queryForObject(sqlCheckUniqueUserTelegramId, sqlParameterSource, Integer.class) == 0;
     }
     @Override
@@ -68,7 +68,7 @@ public class UserDaoJdbc implements UserDao {
 
     @Override
     public User getUserByTelegramId(long TelegramId) {
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource("telegtam_Id", TelegramId);
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource("telegtam_id", TelegramId);
         User res = namedParameterJdbcTemplate.queryForObject(sqlGetUserByTelegramId, sqlParameterSource, User.class);
         return new User();
 //        String sql = "SELECT USERNAME, TIMESTAMPDIFF(YEAR, DATEOFBIRTH, CURDATE()) as AGE FROM USER WHERE USERTYPE=?";

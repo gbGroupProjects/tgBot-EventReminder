@@ -1,6 +1,7 @@
 package com.github.gbGroupProjects.tgBot.bot;
 
 import com.github.gbGroupProjects.tgBot.command.Command;
+import com.github.gbGroupProjects.tgBot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -41,6 +42,11 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         long userTelegramId = update.getMessage().getFrom().getId();
+        if (commandContainer.isUserTelegramIdUnique(userTelegramId)) {
+            int s = 1;
+        }
+        //User user = commandContainer.getUserByTelegramId(userTelegramId);
+
         if (update.hasMessage()) {
             if (update.getMessage().hasText()) {
                 onUpdateReceivedText(update);
