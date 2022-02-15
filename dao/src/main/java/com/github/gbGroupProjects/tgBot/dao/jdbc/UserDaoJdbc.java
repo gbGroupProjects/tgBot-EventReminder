@@ -25,10 +25,10 @@ public class UserDaoJdbc implements UserDao {
 
     private String sqlAllUsers = "SELECT u.user_id, u.user_name, u.telegram_id FROM user u ORDER BY u.user_id";
     private String sqlSelectUserBuTelegramId = "SELECT u.user_id, u.user_name FROM user u WHERE u.telegram_Id = :telegram_id";
-    private String sqlAddNewUser = "INSERT INTO user(user_id, telegram_id, name) VALUES (:user_id, :telegram_id, :name)";
+    private String sqlAddNewUser = "INSERT INTO user(user_id, telegram_id, user_name ) VALUES (:user_id, :telegram_id, :user_name )";
     private String sqlCountOfUsers = "SELECT count(*) FROM user";
-    private String sqlCheckUniqueUserTelegramId ="SELECT count(*) FROM user WHERE u.telegram_id = :telegram_id";
-    private String sqlGetUserByTelegramId ="SELECT u.user_id, u.user_name, u.telegram_id FROM user WHERE u.telegram_id = :telegram_id";
+    private String sqlCheckUniqueUserTelegramId ="SELECT count(*) FROM user WHERE telegram_id = :telegram_id";
+    private String sqlGetUserByTelegramId ="SELECT u.user_id, u.user_name, u.telegram_id FROM user u WHERE telegram_id = :telegram_id";
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -41,7 +41,7 @@ public class UserDaoJdbc implements UserDao {
         Map<String, Object> mapParams = new HashMap<>();
         mapParams.put("user_id", user.getUserId());
         mapParams.put("telegram_id", user.getTelegramId());
-        mapParams.put("Name", user.getName());
+        mapParams.put("user_name", user.getName());
 
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource(mapParams);
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -56,7 +56,7 @@ public class UserDaoJdbc implements UserDao {
     @Override
     public boolean isUserTelegramIdUnique(long TelegramId)
     {
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource("telegtam_id", TelegramId);
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource("telegram_id", TelegramId);
         return namedParameterJdbcTemplate.queryForObject(sqlCheckUniqueUserTelegramId, sqlParameterSource, Integer.class) == 0;
     }
     @Override
@@ -68,8 +68,15 @@ public class UserDaoJdbc implements UserDao {
 
     @Override
     public User getUserByTelegramId(long TelegramId) {
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource("telegtam_id", TelegramId);
-        User res = namedParameterJdbcTemplate.queryForObject(sqlGetUserByTelegramId, sqlParameterSource, User.class);
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource("telegram_id", TelegramId);
+        String sql = "SELECT u.user_id, u.user_name, u.telegram_id FROM user u WHERE u.telegram_id = " + TelegramId;
+        List<User> ls = namedParameterJdbcTemplate.query(sql,  new UserRowMapper()  );
+        if (ls.size() == 1 )
+            return ls.get(0);
+        // return ls.get(0).;
+        //User res = namedParameterJdbcTemplate.queryForObject(sqlGetUserByTelegramId, sqlParameterSource, User.class);
+
+        //User res = namedParameterJdbcTemplate.queryForObject(sqlGetUserByTelegramId, sqlParameterSource, User.class);
         return new User();
 //        String sql = "SELECT USERNAME, TIMESTAMPDIFF(YEAR, DATEOFBIRTH, CURDATE()) as AGE FROM USER WHERE USERTYPE=?";
 //        SqlRowSet rowset = jdbcTemplate.queryForRowSet(sql, new Object[]{userType}, new int[]{Types.VARCHAR});

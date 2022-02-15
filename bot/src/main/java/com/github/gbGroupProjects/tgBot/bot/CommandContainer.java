@@ -26,13 +26,13 @@ public class CommandContainer {
     // todo:  реализовать управление командами
     private Map<String, Command> commandMap = new HashMap<>();
 
+    public AddUserCommand getUserCommand() {
+        return addUserCommand;
+    }
+
     public boolean isUserTelegramIdUnique(long TelegramId) {
         return addUserCommand.isUserTelegramIdUnique(TelegramId);
 }
-
-    public User getUserByTelegramId(long TelegramId) {
-        return addUserCommand.getUserByTelegramId(TelegramId);
-    }
 
 
     public Command defineCommand(String commandIdentifier) {

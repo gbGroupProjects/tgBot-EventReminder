@@ -10,6 +10,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.util.List;
+
 @Component
 public class EventReminderTelegramBot extends TelegramLongPollingBot {
     @Value("${bot.username}")
@@ -42,9 +44,22 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         long userTelegramId = update.getMessage().getFrom().getId();
-        if (commandContainer.isUserTelegramIdUnique(userTelegramId)) {
-            int s = 1;
+        if (commandContainer.getUserCommand().isUserTelegramIdUnique(userTelegramId)) {  // 1915453131
+            String sResult = commandContainer.getUserCommand().execute(update);
+            sendMessage(update, "+" + sResult + ">" );
+
+            User u = commandContainer.getUserCommand().getUserByTelegramId(userTelegramId);
+            List<User> ls = commandContainer.getUserCommand().getAllUsers();
+            sResult = "";
+            for (User uu:ls ) {
+                sResult = sResult + "[" + uu.getUserId() + "],{" + uu.getTelegramId() + "}," + uu.getName() + "\n";
+            }
+            sendMessage(update, "all:" + sResult + ">" );
+        } else {
+            User u = commandContainer.getUserCommand().getUserByTelegramId(userTelegramId);
+            sendMessage(update, "" + u.getName() + ">" );
         }
+
         //User user = commandContainer.getUserByTelegramId(userTelegramId);
 
         if (update.hasMessage()) {

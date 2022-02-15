@@ -13,7 +13,7 @@ CREATE TABLE user
 (
   user_id INT NOT NULL AUTO_INCREMENT,
   telegram_id INT NOT NULL,
-  user_name VARCHAR(20) UNIQUE,
+  user_name VARCHAR(64) UNIQUE,
   CONSTRAINT user_pk PRIMARY KEY (user_id)
 );
 
