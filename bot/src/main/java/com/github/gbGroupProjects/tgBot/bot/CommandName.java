@@ -6,7 +6,7 @@ public enum CommandName {
     START("/start"),
     STOP("/stop"),
     HELP("/help"),
-
+    DELETE("/delete"),
     GET("/get"),
 
     ADDUSER("/add"),
