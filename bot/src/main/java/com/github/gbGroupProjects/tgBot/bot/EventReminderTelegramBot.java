@@ -1,6 +1,7 @@
 package com.github.gbGroupProjects.tgBot.bot;
 
 import com.github.gbGroupProjects.tgBot.command.Command;
+import com.github.gbGroupProjects.tgBot.model.Event;
 import com.github.gbGroupProjects.tgBot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -185,6 +186,16 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
         }
         return stringBuilder.toString() + "";
     }
+    private String getListUserEvents(int userId) {
+        List<Event> ls = commandContainer.getUserCommand().getAllUserEvents(userId);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("-events of user ["+userId+"]---\n");
+        for (Event ev:ls ) {
+            stringBuilder.append("[" + ev.getEventId() + "],{" + ev.getDateOfEvent().toString() + "}," + ev.getCommentToDo() + "\n");
+        }
+        return stringBuilder.toString() + "";
+    }
+
     private void sendMessage(Update update, String message) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(update.getMessage().getChatId().toString());

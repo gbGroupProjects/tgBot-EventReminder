@@ -1,6 +1,7 @@
 package com.github.gbGroupProjects.tgBot.command;
 import com.github.gbGroupProjects.tgBot.dao.CategoryDao;
 import com.github.gbGroupProjects.tgBot.dao.UserDao;
+import com.github.gbGroupProjects.tgBot.model.Event;
 import com.github.gbGroupProjects.tgBot.model.User;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -37,6 +38,7 @@ public class AddUserCommand implements Command {
     public List<User> getAllUsers() {
         return userDao.findAllUsers();
     }
+    public List<Event> getAllUserEvents(int userId) { return userDao.getAllUserEvents(userId);  }
 
     @Override
     public String execute(Update update) {
@@ -53,5 +55,6 @@ public class AddUserCommand implements Command {
         }
         //return REGUSER_MESSAGE;
     }
+
 }
 

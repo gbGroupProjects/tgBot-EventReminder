@@ -1,5 +1,6 @@
 package com.github.gbGroupProjects.tgBot.dao;
 
+import com.github.gbGroupProjects.tgBot.model.Event;
 import com.github.gbGroupProjects.tgBot.model.User;
 import java.util.List;
 
@@ -12,6 +13,8 @@ public interface UserDao {
      * @return Category list
      */
     List<User> findAllUsers();
+
+    List<Event>  getAllUserEvents(int userId);
 
     /**
      * Create new Category
@@ -39,6 +42,5 @@ public interface UserDao {
      * @return - count of all users
      */
     Integer countOfUsers();
-
 
 }
