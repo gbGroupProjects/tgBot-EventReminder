@@ -96,10 +96,15 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
                 InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
                 List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
                 List<InlineKeyboardButton> rowInline = new ArrayList<>();
-                InlineKeyboardButton m = new InlineKeyboardButton();
-                m.setText("Update message text");
-                m.setCallbackData("update_msg_text");
+                    InlineKeyboardButton m = new InlineKeyboardButton();
+                    m.setText("Узнать события");
+                    m.setCallbackData("Действие_Кнопка_1");
                 rowInline.add(m);
+                    InlineKeyboardButton m2 = new InlineKeyboardButton();
+                    m2.setText("Настройки");
+                    m2.setCallbackData("Действие_Кнопка_2");
+                rowInline.add(m2);
+
                 // Set the keyboard to the markup
                 rowsInline.add(rowInline);
                 // Add it to the message
@@ -119,8 +124,8 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
             long message_id = update.getCallbackQuery().getMessage().getMessageId();
             long chat_id = update.getCallbackQuery().getMessage().getChatId();
 
-            if (call_data.equals("update_msg_text")) {
-                String answer = "Updated message text";
+            if (call_data.equals("Действие_Кнопка_1")) {
+                String answer = "Событий на сегодня нет..";
                 EditMessageText new_message = new EditMessageText();
                 new_message.setChatId(update.getCallbackQuery().getMessage().getChatId().toString());
                 new_message.setMessageId(toIntExact(message_id));
