@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+// postgres
 @Component
 public class EventDaoJdbc  implements EventDao {
     private String sqlAllUserEvents     = "SELECT e.event_id, e.user_name, e.category_id, e.comment, e.date, e.active  FROM event e WHERE e.user_id = :user_id ORDER BY e.event_id";
