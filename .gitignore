@@ -17,6 +17,7 @@ bot/src/main/resources/application.properties
 ### IntelliJ IDEA ###
 .idea
 *.iws
+*.log
 *.iml
 *.ipr
 
@@ -32,3 +33,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/hs_err_pid7024.log

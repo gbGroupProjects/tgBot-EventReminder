@@ -68,11 +68,6 @@ public class UserDaoJdbc implements UserDao {
     }
 
     @Override
-    public List<Event> getAllUserEvents(int userId) {
-        return namedParameterJdbcTemplate.query(sqlAllUsers, new EventRowMapper());
-    }
-
-    @Override
     public User getUserByTelegramId(long TelegramId) {
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource("telegram_id", TelegramId);
         String sql = "SELECT u.user_id, u.user_name, u.telegram_id FROM user u WHERE u.telegram_id = " + TelegramId;
@@ -90,7 +85,6 @@ public class UserDaoJdbc implements UserDao {
 //        while(rowset.next()){
 //            users.add(Map.of(rowset.getString("USERNAME"), rowset.getInt("Age")));
 //        }
-
     }
 
 
@@ -104,16 +98,5 @@ public class UserDaoJdbc implements UserDao {
             return user;
         }
     }
-    private class EventRowMapper implements RowMapper<Event> {
-        @Override
-        public Event mapRow(ResultSet resultSet, int i) throws SQLException {
-            Event ev = new Event();
-            ev.setEventId(resultSet.getInt("event_id"));
-            ev.setDateOfEvent(resultSet.getDate("event_date").toLocalDate());
-            //  todo:  add
-            return ev;
-        }
-    }
-
 }
 

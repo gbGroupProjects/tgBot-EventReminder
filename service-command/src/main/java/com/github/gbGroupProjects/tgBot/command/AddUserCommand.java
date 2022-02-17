@@ -14,7 +14,7 @@ public class AddUserCommand implements Command {
 
     public final static String REGUSER_MESSAGE = "Registering new user";
 
-    private UserDao userDao;
+    private final UserDao userDao;
 
     public AddUserCommand(UserDao u) {
         this.userDao = u;
@@ -38,7 +38,7 @@ public class AddUserCommand implements Command {
     public List<User> getAllUsers() {
         return userDao.findAllUsers();
     }
-    public List<Event> getAllUserEvents(int userId) { return userDao.getAllUserEvents(userId);  }
+    public List<Event> getAllUserEventsA(int userId) { return null; } // todo:  перенести в Эвенты?? userDao.getAllUserEvents(userId);  }
 
     @Override
     public String execute(Update update) {

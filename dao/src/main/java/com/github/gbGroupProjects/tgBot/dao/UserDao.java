@@ -14,7 +14,7 @@ public interface UserDao {
      */
     List<User> findAllUsers();
 
-    List<Event>  getAllUserEvents(int userId);
+///    List<Event>  getAllUserEvents(int userId);
 
     /**
      * Create new Category
@@ -42,5 +42,4 @@ public interface UserDao {
      * @return - count of all users
      */
     Integer countOfUsers();
-
 }
