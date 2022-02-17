@@ -186,7 +186,7 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
         }
         return stringBuilder.toString() + "";
     }
-    private String getListUserEvents(int userId) {
+ /*   private String getListUserEvents(int userId) {
         List<Event> ls = commandContainer.getUserCommand().getAllUserEvents(userId);
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("-events of user ["+userId+"]---\n");
@@ -194,7 +194,7 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
             stringBuilder.append("[" + ev.getEventId() + "],{" + ev.getDateOfEvent().toString() + "}," + ev.getCommentToDo() + "\n");
         }
         return stringBuilder.toString() + "";
-    }
+    }   */
 
     private void sendMessage(Update update, String message) {
         SendMessage sendMessage = new SendMessage();

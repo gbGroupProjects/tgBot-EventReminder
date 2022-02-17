@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS event;
-DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS category;
 
 CREATE TABLE category
 (
@@ -23,11 +23,10 @@ CREATE TABLE event
   user_id INT NOT NULL,
   category_id INT NOT NULL,
   date DATE NOT NULL,
-  active INT NOT NULL DEFAULT 0,
-  regular INT NOT NULL DEFAULT 0,
-  daysIn INT NOT NULL DEFAULT 0,
-
   comment VARCHAR(20) NOT NULL,
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  regular BOOLEAN NOT NULL DEFAULT FALSE,
+  daysIn INT NOT NULL DEFAULT 0,
 
     CONSTRAINT event_pk PRIMARY KEY (event_id),
     CONSTRAINT event_category_fk FOREIGN KEY (category_id) REFERENCES category (category_id)
