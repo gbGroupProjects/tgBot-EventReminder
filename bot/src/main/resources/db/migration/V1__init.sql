@@ -28,6 +28,7 @@ CREATE TABLE "pgBot".event
 (
     event_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     user_id integer NOT NULL,
+    telegram_id integer NOT NULL,
     category_id integer NOT NULL,
     date DATE NOT NULL,
     comment VARCHAR(20) NOT NULL,
@@ -47,10 +48,15 @@ INSERT INTO "pgBot".category(category_name) VALUES ( 'Контроль чего-
 INSERT INTO "pgBot".category(category_name) VALUES ( 'Прочее');
 
 INSERT INTO "pgBot".user( user_name , telegram_id) VALUES ( 'Vladimir Runov', 1915453131);
+INSERT INTO "pgBot".user( user_name , telegram_id) VALUES ( 'Vlad', 284401506);
 
-INSERT INTO "pgBot".event( user_id, date, category_id, comment) VALUES (1, '2022-02-14', 2, 'день Валентина!');
-INSERT INTO "pgBot".event( user_id, date, category_id, comment) VALUES (1, '2011-02-13', 1, 'др. Коли');
-INSERT INTO "pgBot".event( user_id, date, category_id, comment) VALUES (1, '2011-09-04', 3, 'счета ПЭС');
-INSERT INTO "pgBot".event( user_id, date, category_id, comment) VALUES (1, '2022-12-04', 3, 'счета DD');
-INSERT INTO "pgBot".event( user_id, date, category_id, comment) VALUES (1, '2022-07-22', 3, 'оплата кредита');
-INSERT INTO "pgBot".event( user_id, date, category_id, comment) VALUES (1, '2022-04-24', 5, 'звонок коллектора');
+INSERT INTO "pgBot".event( user_id, telegram_id, date, category_id, comment) VALUES (1, 1915453131, '2022-02-14', 2, 'день Валентина!');
+INSERT INTO "pgBot".event( user_id, telegram_id, date, category_id, comment) VALUES (1, 1915453131, '2011-02-13', 1, 'др. Коли');
+INSERT INTO "pgBot".event( user_id, telegram_id, date, category_id, comment) VALUES (1, 1915453131, '2011-09-04', 3, 'счета ПЭС');
+INSERT INTO "pgBot".event( user_id, telegram_id, date, category_id, comment) VALUES (1, 1915453131, '2022-12-04', 3, 'счета DD');
+INSERT INTO "pgBot".event( user_id, telegram_id, date, category_id, comment) VALUES (1, 1915453131, '2022-07-22', 3, 'оплата кредита');
+INSERT INTO "pgBot".event( user_id, telegram_id, date, category_id, comment) VALUES (1, 1915453131, '2022-04-24', 5, 'звонок коллектора');
+
+
+INSERT INTO "pgBot".event( user_id, telegram_id, date, category_id, comment) VALUES (2, 284401506, '2022-02-14', 2, 'день Валентина!');
+INSERT INTO "pgBot".event( user_id, telegram_id, date, category_id, comment) VALUES (2, 284401506, '2011-02-13', 1, 'др. Коли');
