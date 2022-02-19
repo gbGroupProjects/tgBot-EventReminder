@@ -21,6 +21,7 @@ CREATE TABLE event
 (
   event_id INT NOT NULL AUTO_INCREMENT,
   user_id INT NOT NULL,
+  telegram_id INT NOT NULL,
   category_id INT NOT NULL,
   date DATE NOT NULL,
   comment VARCHAR(20) NOT NULL,
