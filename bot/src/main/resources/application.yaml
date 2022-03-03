@@ -6,6 +6,7 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/tbot
+    jdbc-url: jdbc:postgresql://localhost:5432/tgbot_db
     username: postgres
     password: postgres
   jpa:
@@ -13,3 +14,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL94Dialect
+
+
+  pingtask:
+    url: https://www.google.com
+    period: 120000
