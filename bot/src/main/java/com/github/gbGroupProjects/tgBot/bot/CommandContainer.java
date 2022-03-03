@@ -17,23 +17,21 @@ public class CommandContainer {
     private StartCommand startCommand;
     private StopCommand stopCommand;
 
+    private UserCommand userCommand;    // обслуживание пользователя\диалог
     private AddUserCommand addUserCommand;
-//    private AddCategoryCommand addCategoryCommand;
-//  private AddEventCommand addEventCommand;
 
     private UnknownCommand unknownCommand;
 
     // todo:  реализовать управление командами
     private Map<String, Command> commandMap = new HashMap<>();
 
-    public AddUserCommand getUserCommand() {
-        return addUserCommand;
+    public UserCommand getUserCommand() {
+        return userCommand;
     }
 
     public boolean isUserTelegramIdUnique(long TelegramId) {
-        return addUserCommand.isUserTelegramIdUnique(TelegramId);
-}
-
+        return userCommand.isUserTelegramIdUnique(TelegramId);
+    }
 
     public Command defineCommand(String commandIdentifier) {
         return commandMap.getOrDefault(commandIdentifier, unknownCommand);

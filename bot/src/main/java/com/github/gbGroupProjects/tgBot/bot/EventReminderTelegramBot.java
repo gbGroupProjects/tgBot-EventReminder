@@ -125,6 +125,8 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
 
             if (call_data.equals("Действие_Кнопка_1")) {
                 String telID = update.getCallbackQuery().getFrom().getId().toString();
+
+
                 String answer = telID + "> Событий на сегодня нет..";
                 EditMessageText new_message = new EditMessageText();
                 new_message.setChatId(update.getCallbackQuery().getMessage().getChatId().toString());

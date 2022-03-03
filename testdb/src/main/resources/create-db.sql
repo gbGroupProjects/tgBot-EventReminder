@@ -30,5 +30,7 @@ CREATE TABLE event
   daysIn INT NOT NULL DEFAULT 0  ,
 
     CONSTRAINT event_pk PRIMARY KEY (event_id),
-    CONSTRAINT event_category_fk FOREIGN KEY (category_id) REFERENCES category (category_id)
+    CONSTRAINT event_category_fk FOREIGN KEY (category_id) REFERENCES category (category_id),
+    CONSTRAINT event_user_fk FOREIGN KEY (user_id) REFERENCES user (user_id)
+
 );
