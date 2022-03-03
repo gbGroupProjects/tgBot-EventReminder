@@ -27,7 +27,7 @@ CREATE TABLE event
   comment VARCHAR(20) NOT NULL,
   active BOOLEAN NOT NULL DEFAULT TRUE,
   regular BOOLEAN NOT NULL DEFAULT FALSE,
-  daysIn INT NOT NULL DEFAULT 0,
+  daysIn INT NOT NULL DEFAULT 0  ,
 
     CONSTRAINT event_pk PRIMARY KEY (event_id),
     CONSTRAINT event_category_fk FOREIGN KEY (category_id) REFERENCES category (category_id)
