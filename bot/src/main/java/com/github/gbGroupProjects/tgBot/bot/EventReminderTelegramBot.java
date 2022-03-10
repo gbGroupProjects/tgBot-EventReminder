@@ -84,38 +84,36 @@ public class EventReminderTelegramBot extends TelegramLongPollingBot {
             String telID = update.getMessage().getFrom().getId().toString();
             String message_text = update.getMessage().getText();
             long chat_id = update.getMessage().getChatId();
-            if (true || update.getMessage().getText().equals("/start")) {
-                SendMessage message = new SendMessage(); // Create a message object object
+            SendMessage message = new SendMessage(); // Create a message object object
                 message.setChatId(update.getMessage().getChatId().toString());
-                message.setText(telID + "> You send /start");
-                InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
-                List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
-                List<InlineKeyboardButton> rowInline = new ArrayList<>();
-                InlineKeyboardButton m = new InlineKeyboardButton();
-                m.setText("Узнать события");
-                m.setCallbackData("Действие_Кнопка_1");
-                rowInline.add(m);
-                InlineKeyboardButton m2 = new InlineKeyboardButton();
-                m2.setText("Настройки");
-                m2.setCallbackData("Действие_Кнопка_Настройки");
-                rowInline.add(m2);
-                InlineKeyboardButton m3 = new InlineKeyboardButton();
-                m3.setText("Удалить(ся)");
-                m3.setCallbackData("Действие_Кнопка_Удалиться");
-                rowInline.add(m3);
+                message.setText(telID + "> You send  " + update.getMessage().getText());
 
-                // Set the keyboard to the markup
-                rowsInline.add(rowInline);
-                // Add it to the message
-                markupInline.setKeyboard(rowsInline);
-                message.setReplyMarkup(markupInline);
-                try {
-                    execute(message); // Sending our message object to user
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
+            if (update.getMessage().getText().equals("/start")) {
+                        InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
+                            List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
+                                List<InlineKeyboardButton> rowInline = new ArrayList<>();
+                                    InlineKeyboardButton m = new InlineKeyboardButton();
+                                        m.setText("Узнать события");
+                                        m.setCallbackData("Действие_Кнопка_1");
+                                rowInline.add(m);
+                                    InlineKeyboardButton m2 = new InlineKeyboardButton();
+                                        m2.setText("Настройки");
+                                        m2.setCallbackData("Действие_Кнопка_Настройки");
+                                rowInline.add(m2);
+                                    InlineKeyboardButton m3 = new InlineKeyboardButton();
+                                        m3.setText("Удалить(ся)");
+                                        m3.setCallbackData("Действие_Кнопка_Удалиться");
+                                rowInline.add(m3);
+                           rowsInline.add(rowInline);
+                        markupInline.setKeyboard(rowsInline);
+                    message.setReplyMarkup(markupInline);
             } else {
-
+                message.setText("??");
+            }
+            try {
+                execute(message); // Sending our message object to user
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
             }
         } else if (update.hasCallbackQuery()) {
             // Set variables
