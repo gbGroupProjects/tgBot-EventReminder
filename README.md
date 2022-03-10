@@ -14,9 +14,12 @@ https://trello.com/b/K0Bfx4KY/бот
 
 Репозиторий
     https://github.com/gbGroupProjects/tgBot
+
+#  Презентация проекта
+   https://docs.google.com/presentation/d/1tWZZpomPazGcJTt9BWdY-8XKvcu46w0BR7M8xVp6oQE/edit#slide=id.g1190c02bb34_0_0
+   
 # Telegram
     https://t.me/ProgjectGBbot        BirthdayBot       @ProgjectGBbot
-
 
 # Описание, инструкции пользователя
 1) После регистрации, пользователь может залить свою базу событий через отправку файла .XLS
