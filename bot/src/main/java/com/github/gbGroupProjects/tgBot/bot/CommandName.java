@@ -6,10 +6,12 @@ public enum CommandName {
     START("/start"),
     STOP("/stop"),
     HELP("/help"),
-
-    ADD("/add"),
+    DELETE("/delete"),
     GET("/get"),
-    ADDEVENT("/addevent");
+
+    ADDUSER("/add"),
+    ADDEVENT("/addevent"),
+    ADDEVENTCATEGORY("/addcategory");
 
     private final String commandName;
 

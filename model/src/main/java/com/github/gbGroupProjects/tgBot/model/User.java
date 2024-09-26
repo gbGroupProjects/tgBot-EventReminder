@@ -4,36 +4,36 @@ package com.github.gbGroupProjects.tgBot.model;
     Категория User - телеграм-юзер
  */
 public class User {
-    private Integer userId;
-    private Integer telegramUserId;
-    private String userName;
+    private Integer Id;
+    private Long telegramId;
+    private String Name;
 
     public Integer getUserId() {
-        return userId;
+        return Id;
     }
-    public Integer getTelegramUserId() {
-        return telegramUserId;
+    public Long getTelegramId() {
+        return telegramId;
     }
-    public String userName() {
-        return userName;
-    }
+    public Object getName() { return Name;  }
 
-    public void setUserId(Integer id) {
-        this.userId = id;
+    public void setId(Integer id) {
+        this.Id = id;
     }
-    public void setTelegramUserId(Integer id) {
-        this.telegramUserId = id;
+    public void setTelegramId(Long id) {
+        this.telegramId = id;
     }
-    public void setUserName(String name) {
-        this.userName = name;
+    public void setName(String name) {
+        this.Name = name;
     }
 
     @Override
     public String toString() {
-        return "Event Category{" +
-                "IdUser=" + userId +
-                "IdTelegram=" + telegramUserId +
-                ", User Name='" + userName + '\'' +
+        return "User{" +
+                "IdUser=" + Id +
+                "IdTelegram=" + telegramId +
+                ", Name='" + Name + '\'' +
                 '}';
     }
+
+
 }

@@ -1,7 +1,17 @@
 package com.github.gbGroupProjects.tgBot.dao;
 
+import com.github.gbGroupProjects.tgBot.dao.jdbc.dto.CategoryNumDtoDao;
 import com.github.gbGroupProjects.tgBot.model.EventCategory;
+import com.github.gbGroupProjects.tgBot.model.dto.CategoryGroupDto;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 /**
  * Category DAO Interface.
  */
